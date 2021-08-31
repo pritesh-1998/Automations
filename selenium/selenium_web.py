@@ -114,7 +114,7 @@ if accesstype=="public":
 elif accesstype=="private":
     private_key=browser.find_element_by_id("repository_visibility_private")
     private_key.click()
-begin_in_link =browser.find_element_by_xpath("input[@value='Begin import']")
+begin_in_link =browser.find_element_by_tag_name('button')
 begin_in_link.click()
 
 # if work==1:
