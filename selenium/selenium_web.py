@@ -40,7 +40,8 @@ def sign_in(browser):
 def creation_repo(browser):
     #data that needs to be collected for webpage to run
         #comman question that are asked in both import and new
-        common_questions()
+        repo_name=str(input("Enter the desired repo name :- "))
+        accesstype=str(input("Do you want your Repo to be public or private :- "))
 
         desc=input("Do you want to insert description (T/F):- ")
         if desc== "T":
@@ -99,6 +100,7 @@ def creation_repo(browser):
             default_branch.send_keys(name)
             update_button=browser.find_element_by_link_text("Update")
             update_button.click()
+        browser.implicitly_wait(20)
 
 #function to import existing repo
 def import_repo(browser):
@@ -141,13 +143,11 @@ def import_repo(browser):
     password_box1.send_keys(details.password)
     password_box1.submit()
 
-
-
-
 if work==1:
    print("CLICK BEGIN IMPORT MANUALLY")
    import_repo(browser)
 
 elif work==2:
+    print("CLICK CREATE MANUALLY")
     creation_repo(browser)
 
