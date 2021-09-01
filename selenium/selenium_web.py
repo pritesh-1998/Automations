@@ -5,13 +5,12 @@ repo_name=""
 print(" 1) Do you want to import already existed repo ")
 print(" 2) Do you want to Create anew one")
 work=int(input("Select any one from the above :- "))
-
+browser = webdriver.Chrome()
 def common_questions():
     repo_name=str(input("Enter the desired repo name :- "))
     accesstype=str(input("Do you want your Repo to be public or private :- "))
 
-def sign_in():
-    browser = webdriver.Chrome()
+def sign_in(browser):
     browser.get("https://github.com/")
 
     # finding element by text
@@ -30,7 +29,7 @@ def sign_in():
     password_box.submit()
 
 
-def creation_repo():
+def creation_repo(browser):
     #data that needs to be collected for webpage to run
         #comman question that are asked in both import and new
         common_questions()
@@ -54,7 +53,7 @@ def creation_repo():
 
     #executing the code on webpage
         #sign in function to open github and sign in
-        sign_in()
+        sign_in(browser)
 
         #click on new_box for creation of new repo
         browser.get("https://github.com/new")
@@ -94,14 +93,14 @@ def creation_repo():
             update_button.click()
 
 #function to import existing repo
-def import_repo():
+def import_repo(browser):
 #data that needs to be collected
     url=input("Your old repository’s clone URL :- ")
     common_questions()
 
 #executing the code on webpage
     #function to sign_in
-    sign_in()
+    sign_in(browser)
 
     #executing repo import
     browser.get("https://github.com/new/import")
@@ -127,6 +126,6 @@ def import_repo():
     begin_in_link.click()
 
 if work==1:
-   import_repo()
+   import_repo(browser)
 elif work==2:
-    creation_repo()
+    creation_repo(browser)
