@@ -1,14 +1,22 @@
 import details
 from selenium import webdriver
+from selenium.webdriver.common import keys
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoSuchElementException
+import time
 accesstype =""
 repo_name=""
 print(" 1) Do you want to import already existed repo ")
 print(" 2) Do you want to Create anew one")
 work=int(input("Select any one from the above :- "))
-browser = webdriver.Chrome()
-def common_questions():
-    repo_name=str(input("Enter the desired repo name :- "))
-    accesstype=str(input("Do you want your Repo to be public or private :- "))
+options = webdriver.ChromeOptions()
+options.add_experimental_option('excludeSwitches', ['enable-logging'])
+browser = webdriver.Chrome(options=options)
+# def common_questions():
+#     repo_name=str(input("Enter the desired repo name :- "))
+#     accesstype=str(input("Do you want your Repo to be public or private :- "))
 
 def sign_in(browser):
     browser.get("https://github.com/")
@@ -96,7 +104,9 @@ def creation_repo(browser):
 def import_repo(browser):
 #data that needs to be collected
     url=input("Your old repository’s clone URL :- ")
-    common_questions()
+    #common_questions()
+    repo_name=str(input("Enter the desired repo name :- "))
+    accesstype=str(input("Do you want your Repo to be public or private :- "))
 
 #executing the code on webpage
     #function to sign_in
@@ -120,12 +130,24 @@ def import_repo(browser):
     elif accesstype=="private":
         private_key=browser.find_element_by_id("repository_visibility_private")
         private_key.click()
+    browser.implicitly_wait(20)
 
-    #clicking on Begin import button
-    begin_in_link =browser.find_element_by_tag_name('button')
-    begin_in_link.click()
+    # finding element on webpage and select it using class name
+    username_box1 = browser.find_element_by_id("vcs_username")
+    password_box1 = browser.find_element_by_id("vcs_password")
+
+    # stimulating a user typing text
+    username_box1.send_keys(details.username)
+    password_box1.send_keys(details.password)
+    password_box1.submit()
+
+
+
 
 if work==1:
+   print("CLICK BEGIN IMPORT MANUALLY")
    import_repo(browser)
+
 elif work==2:
     creation_repo(browser)
+
