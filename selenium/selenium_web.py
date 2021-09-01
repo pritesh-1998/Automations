@@ -7,8 +7,8 @@ print(" 2) Do you want to Create anew one")
 work=int(input("Select any one from the above :- "))
 
 def common_questions():
-    repo_name=input("Enter the desired repo name :- ")
-    accesstype=input("Do you want your Repo to be public or private :- ")
+    repo_name=str(input("Enter the desired repo name :- "))
+    accesstype=str(input("Do you want your Repo to be public or private :- "))
 
 def sign_in():
     browser = webdriver.Chrome()
