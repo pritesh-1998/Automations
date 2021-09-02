@@ -1,5 +1,5 @@
 import PyPDF2
 open()
-PyPDF2.PdfFileReader()
+PyPDF2.PdfFileWriter()
 
 
