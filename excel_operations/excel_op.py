@@ -7,20 +7,20 @@ wb=openpyxl.load_workbook(r"C:\Users\plath\Documents\programming codes\Python au
 print(wb.sheetnames)
 data_sheet=wb["Sheet1"]
 
-#accesing the cells
-#here a=column and 1=row number
-# cell=data_sheet["a1"]
-# #print cell value
-# print(cell.value)
-# #changings thevalye of that cell
-# cell.value="ID"
-# print(cell.value)
-# #print the value in that row
-# print(cell.row)
-# #print the value in that column
-# print(cell.column)
-# #print the exact coordinates of that cell
-# print(cell.coordinate)
+# accesing the cells
+# here a=column and 1=row number
+cell=data_sheet["a1"]
+#print cell value
+print(cell.value)
+#changings thevalye of that cell
+cell.value="ID"
+print(cell.value)
+#print the value in that row
+print(cell.row)
+#print the value in that column
+print(cell.column)
+#print the exact coordinates of that cell
+print(cell.coordinate)
 
 #getting al the values at a time
 data_sheet=wb["Sheet1"]
@@ -37,6 +37,11 @@ print(column_data)
 #getting al the values from row a to c
 columns=data_sheet["a:c"]
 print(columns)
+
+#inserting a complete data in new row
+data_sheet.append([1,2,3])
+
+wb.save("sheet2.xlsx")
 #create sheet
 # wb.create_sheet("sample",0)
 
