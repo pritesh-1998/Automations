@@ -7,8 +7,10 @@ name = "pypi"
 requests = "*"
 selenium = "*"
 pypdf2 = "*"
+openpyxl = "*"
 
 [dev-packages]
+pylint = "*"
 
 [requires]
 python_version = "3.9"
